@@ -91,7 +91,7 @@ public class MemberController extends HttpServlet {
 			
 			System.out.println("어디로 갈까"+dir+"/"+page);
 			MemberServiceImpl.getInstance().creatMember(member);
-			member = MemberServiceImpl.getInstance().findMemberById("id");
+			member = MemberServiceImpl.getInstance().findMemberById(member.getId());
 			System.out.println(">>>>>> 조회결과 "+member.toString());
 			
 			session.setAttribute("user", member);

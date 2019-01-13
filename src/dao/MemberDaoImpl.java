@@ -18,18 +18,12 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public void insertMember(MemberBean member) {
-		try {
 
-			if (DatabaseFactory.createDatabase("oracle").
-					getConnection().createStatement().executeUpdate(
-							String.format("INSERT INTO member(id,name,pass,ssn)\n" 
-									+ "VALUES('%s','%s','%s','%s')",
-							member.getId(), member.getName(),
-							member.getPass(), member.getSsn())) == 1) {
-				System.out.println("성공!!!!");
-			} else {
-				System.out.println("실패!!!!");
-			}
+		try {
+			System.out.println("insert Member 진입 !!!");
+			DatabaseFactory.createDatabase("oracle").getConnection().createStatement().executeUpdate(
+					String.format("INSERT INTO member(id, name, pass, ssn)\n" + "VALUES('%s', '%s', '%s', '%s')",
+					member.getId(), member.getName(), member.getPass(), member.getSsn()));
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -76,11 +70,9 @@ public class MemberDaoImpl implements MemberDao {
 	public MemberBean selectMemberById(String id) {
 		MemberBean member = null;
 		try {
-			ResultSet rs = DatabaseFactory.createDatabase("oracle")
-					.getConnection().createStatement().executeQuery(
-							String.format("SELECT * FROM member\n" + 
-									"WHERE id LIKE '%s'", id));
-			while(rs.next()) {
+			ResultSet rs = DatabaseFactory.createDatabase("oracle").getConnection().createStatement()
+					.executeQuery(String.format("SELECT * FROM member\n" + "WHERE id LIKE '%s'", id));
+			while (rs.next()) {
 				member = new MemberBean();
 				member.setId(rs.getString("id"));
 				member.setName(rs.getString("name"));
@@ -100,8 +92,6 @@ public class MemberDaoImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	
 
 	@Override
 	public void updatePass(String id, String pass, String newpass) {

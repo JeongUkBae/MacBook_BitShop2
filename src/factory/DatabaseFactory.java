@@ -15,6 +15,6 @@ public class DatabaseFactory {
 			break;
 		}
 		
-		return null;
+		return database;
 	}
 }

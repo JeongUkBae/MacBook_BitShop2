@@ -24,7 +24,7 @@ public class Oracle implements Database{
 		try {
 			Class.forName(Constant.ORACLE_DRIVER);
 			conn = DriverManager.getConnection(
-					url, username, password);
+					Constant.ORACLE_URL, Constant.USERNAME, Constant.PASSWORD);
 					
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

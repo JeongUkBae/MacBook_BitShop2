@@ -18,6 +18,9 @@ public class Command {
 				.forward(request, response);
 	}
 
+	
+	
+	
 	public static void dirPath(HttpServletRequest request, HttpServletResponse response, String letcmd, String letdir,
 			String letpage) throws ServletException, IOException {
 		System.out.println("커맨더 dir 으로 진입 ==");

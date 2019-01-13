@@ -18,6 +18,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void creatMember(MemberBean member) {
 		System.out.println("맴버서비스 조인에 진입");
+		System.out.println("===컨트롤러에서넘어온 회원정보===");
+		System.out.println("ID :"+member.getId());
+		System.out.println("NAME :"+member.getName());
+		System.out.println("PASS :"+member.getPass());
+		System.out.println("SSN :"+member.getSsn());
 		dao.insertMember(member);
 	}
 
