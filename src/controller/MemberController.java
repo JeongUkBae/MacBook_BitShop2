@@ -32,7 +32,9 @@ public class MemberController extends HttpServlet {
 		 * */
 		
 		System.out.println("======> 맴버 서블릿 입장");
-		
+		String context = request.getContextPath();
+		HttpSession session = request.getSession();
+		session.setAttribute("context", context);
 		MemberBean member = null;
 		MemberService memberService = MemberServiceImpl.getInstance();
 		String cmd = request.getParameter("cmd");
@@ -52,7 +54,7 @@ public class MemberController extends HttpServlet {
 		if(dest ==null) { 
 			dest = "NONE";
 		}
-		HttpSession session = request.getSession(); 
+		
 		
 		switch(cmd) {
 		case "login": 
@@ -106,7 +108,7 @@ public class MemberController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 
